@@ -20,7 +20,6 @@
                 OwnerId: ko.observable(""),
                 CarNumber: ko.observable(""),
                 CarColor: ko.observable(""),
-                CarNumber: ko.observable(""),
                 MemberId: ko.observable(""),
                 MemberName: ko.observable(""),
                 MemberMobile: ko.observable(""),
@@ -104,6 +103,7 @@
 
             //设置车主信息
             self.SetOwner = function () {
+                self.Owner().CarNumber($("#ddlCarArea").val() + $("#txtCarNum").val());
                 if (!self.Owner().UseType()) {
                     ShowTips("请选择车辆使用性质!");
                     return;
@@ -124,7 +124,7 @@
                     ShowTips("请填写联系方式!");
                     return;
                 }
-                self.Owner().CarNumber($("#ddlCarArea").val() + $("#txtCarNum").val());
+               
                 $.post("/Owner/CreateOwner", { "data": ko.toJSON(self.Owner()) }, function (result) {
                     if (result.IsSuccess) {
                         self.Account().IsOwner("1");

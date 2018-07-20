@@ -91,7 +91,7 @@
 
             }
             self.SetOwner = function () {
-
+                self.Owner().CarNumber($("#ddlCarArea").val() + $("#txtCarNum").val());
                 if (!self.Owner().UseType()) {
                     ShowTips("请选择车辆使用性质!");
                     return;
@@ -116,7 +116,7 @@
                     ShowTips("请选择车辆注册日期!");
                     return;
                 }
-                self.Owner().CarNumber($("#ddlCarArea").val() + $("#txtCarNum").val());
+               
                 $.post("/Owner/CreateOwner", { "data": ko.toJSON(self.Owner()) }, function (result) {
                     if (result.IsSuccess) {
                         self.IsOwner("1");
