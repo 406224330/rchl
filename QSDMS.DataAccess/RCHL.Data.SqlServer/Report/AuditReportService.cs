@@ -75,7 +75,7 @@ namespace RCHL.Data.SqlServer.Report
                 {
                     sbWhere.AppendFormat(" and ServiceTime='{0}'", para.ServiceTime);
                 }
-
+                //参数
                 SqlParameter[] pars = {
                        new SqlParameter("@pSQL", pSQL),
                        new SqlParameter("@keyField", "Id"),
