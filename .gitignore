@@ -13,3 +13,4 @@ packages
 *.xml
 *.log
 *.pdb
+*.suo
