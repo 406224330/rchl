@@ -1,4 +1,4 @@
-echo "# rchl" >> README.md
+
 git status
 git add *
 git commit -m "update notice"
