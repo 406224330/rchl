@@ -140,11 +140,11 @@
                         var data = result.ResultData["Data"];
                         if (data) {
                             self.AuditOrder().MemberId(data.MemberId);//
-                            self.AuditOrder().MemberName(data.NikeName);//
+                            self.AuditOrder().MemberName(data.MemberName);//
                             self.AuditOrder().Mobile(data.Mobile);//
 
                             self.AuditGroupOrder().MemberId(data.MemberId);//
-                            self.AuditGroupOrder().MemberName(data.NikeName);//
+                            self.AuditGroupOrder().MemberName(data.MemberName);//
                             self.AuditGroupOrder().Mobile(data.Mobile);//
 
                             if (data.Owner) {
@@ -174,7 +174,7 @@
                                 self.AuditOrder().RegisterTime(self.Owner().RegisterTime());
                             } else {
                                 self.Owner().MemberId(data.MemberId);
-                                self.Owner().MemberName(data.NikeName);
+                                self.Owner().MemberName(data.MemberName);
                                 self.Owner().MemberMobile(data.Mobile);
                             }
 

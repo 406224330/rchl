@@ -297,9 +297,9 @@ namespace QSDMS.Application.Web.Areas.RchlManage.Controllers
                     List<ColumnEntity> listColumnEntity = new List<ColumnEntity>();
                     excelconfig.ColumnEntity = listColumnEntity;
                     ColumnEntity columnentity = new ColumnEntity();
-                    excelconfig.ColumnEntity.Add(new ColumnEntity() { Column = "MemberName", ExcelColumn = "用户账号", Width = 20 });
+                    excelconfig.ColumnEntity.Add(new ColumnEntity() { Column = "MemberName", ExcelColumn = "用户姓名", Width = 20 });
                     excelconfig.ColumnEntity.Add(new ColumnEntity() { Column = "NikeName", ExcelColumn = "用户昵称", Width = 20 });
-                    excelconfig.ColumnEntity.Add(new ColumnEntity() { Column = "Mobile", ExcelColumn = "联系电话", Width = 15 });
+                    excelconfig.ColumnEntity.Add(new ColumnEntity() { Column = "Mobile", ExcelColumn = "注册手机号", Width = 15 });
                     excelconfig.ColumnEntity.Add(new ColumnEntity() { Column = "SchoolName", ExcelColumn = "所属驾校", Width = 15 });
                     excelconfig.ColumnEntity.Add(new ColumnEntity() { Column = "HaveStudyHours", ExcelColumn = "剩余学时", Width = 20 });
                     excelconfig.ColumnEntity.Add(new ColumnEntity() { Column = "CreateTime", ExcelColumn = "注册时间", Width = 50 });

@@ -36,7 +36,7 @@
                     if (result.IsSuccess) {
                         var data = result.ResultData["Data"];
                         if (data) {
-                            self.Account().MemberName(data.NikeName);
+                            self.Account().MemberName(data.MemberName);
                             self.Account().Mobile(data.Mobile);
                             self.Account().MemberId(data.MemberId);
                             if (data.HeadIcon) {
@@ -79,7 +79,7 @@
                                 }
                             } else {
                                 self.Owner().MemberId(data.MemberId);
-                                self.Owner().MemberName(data.NikeName);
+                                self.Owner().MemberName(data.MemberName);
                                 self.Owner().MemberMobile(data.Mobile);
                             }
                         }
@@ -375,7 +375,7 @@
 <div class="McMy_top">
     <img data-bind="attr:{src:$root.Account().FaceImage()==null?'/images/face.png':$root.Account().FaceImage}" class="McMy_top_left">
     <div class="McMy_top_right">
-        <div class="McMy_top_name" data-bind="text:$root.Account().NikeName"></div>
+        <div class="McMy_top_name" data-bind="text:$root.Account().MemberName"></div>
         <div class="McMy_top_tel" data-bind="text:$root.Account().Mobile"></div>
         <div class="McMy_top_sm">
             <span><i class="iconfont icon-huiyuan"></i><em data-bind="text:$root.Account().LevName"></em></span>

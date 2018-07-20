@@ -73,7 +73,7 @@
                     if (result.IsSuccess) {
                         var data = result.ResultData["Data"];
                         if (data) {
-                            self.SeeCarOrder().MemberName(data.NikeName);//可以修改
+                            self.SeeCarOrder().MemberName(data.MemberName);//可以修改
                             self.SeeCarOrder().MemberMobile(data.Mobile);//可以修改
                             self.SeeCarOrder().MemberId(data.MemberId);//取注册用户的
                         }

@@ -38,8 +38,8 @@
                 { label: "主键", name: "MemberId", hidden: true },
                 { label: "驾校id", name: "SchoolId", hidden: true },
                 { label: "驾校名称", name: "SchoolName", hidden: true },
-                { label: "用户名", name: "MemberName", index: "MemberName", width: 150, align: "center" },
-                { label: "姓名", name: "NikeName", index: "NikeName", width: 150, align: "center" },
+                { label: "用户姓名", name: "MemberName", index: "MemberName", width: 150, align: "center" },
+                { label: "昵称", name: "NikeName", index: "NikeName", width: 150, align: "center" },
                 { label: "联系方式", name: "Mobile", index: "Mobile", width: 150, align: "center" },
                  { label: "账户积分", name: "Point", index: "Point", width: 100, align: "left" },
                   {
@@ -81,7 +81,7 @@
     function btn_Ok() {
         var memberId = "", memberName = "", mobile = "", schoolId = "", schoolName = "";
         memberId = $("#gridTable").jqGridRowValue("MemberId");
-        memberName = $("#gridTable").jqGridRowValue("NikeName");
+        memberName = $("#gridTable").jqGridRowValue("MemberName");
         mobile = $("#gridTable").jqGridRowValue("Mobile");
         schoolId = $("#gridTable").jqGridRowValue("SchoolId");
         schoolName = $("#gridTable").jqGridRowValue("SchoolName");
@@ -102,9 +102,8 @@
                         <div id="queryCondition" class="btn-group">
                             <a class="btn btn-default dropdown-text" data-toggle="dropdown">选择条件</a>
                             <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a data-value="MemberName">用户名</a></li>
-                                <li><a data-value="NikeName">姓名</a></li>
+                            <ul class="dropdown-menu">                              
+                                <li><a data-value="MemberName">姓名</a></li>
                                 <li><a data-value="Mobile">联系方式</a></li>
                                 <li><a data-value="SchoolName">报名驾校</a></li>
                             </ul>

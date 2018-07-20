@@ -82,7 +82,7 @@
                     if (result.IsSuccess) {
                         var data = result.ResultData["Data"];
                         if (data) {
-                            self.InsuranceOrder().MemberName(data.NikeName);
+                            self.InsuranceOrder().MemberName(data.MemberName);
                             self.InsuranceOrder().Mobile(data.Mobile);
                             self.InsuranceOrder().MemberId(data.MemberId);
 
@@ -111,7 +111,7 @@
                             } else {
                                 self.IsOwner("0");
                                 self.Owner().MemberId(data.MemberId);
-                                self.Owner().MemberName(data.NikeName);
+                                self.Owner().MemberName(data.MemberName);
                                 self.Owner().MemberMobile(data.Mobile);
                             }
                         }

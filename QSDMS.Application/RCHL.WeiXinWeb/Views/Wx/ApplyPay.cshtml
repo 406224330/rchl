@@ -35,7 +35,7 @@
                 $.post("/Account/GetUserDetail", null, function (result) {
                     if (result.IsSuccess) {
                         var data = result.ResultData["Data"];
-                        self.Applay().MemberName(data.NikeName);//可以修改
+                        self.Applay().MemberName(data.MemberName);//可以修改
                         self.Applay().MemberMobile(data.Mobile);//可以修改
                         self.Applay().MemberId(data.MemberId);//取注册用户的
                         self.Applay().ProvinceId(data.ProvinceId);

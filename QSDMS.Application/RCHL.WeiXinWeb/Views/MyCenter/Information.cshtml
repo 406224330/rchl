@@ -70,7 +70,7 @@
                 });
             }
             self.Save = function () {
-                if (!self.Account().NikeName()) {
+                if (!self.Account().MemberName()) {
                     ShowTips("请输入姓名");
                     return;
                 }
@@ -248,7 +248,7 @@
     <li class="Mcin_list">
         <span class="Mcin_list_left">姓名</span>
         <font class="Mcin_list_right">
-            <input type="text" class="Mcin_list_input" data-bind="value:$root.Account().NikeName">
+            <input type="text" class="Mcin_list_input" data-bind="value:$root.Account().MemberName">
 
         </font>
     </li>

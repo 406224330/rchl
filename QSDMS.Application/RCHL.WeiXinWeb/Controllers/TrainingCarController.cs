@@ -532,7 +532,7 @@ namespace RCHL.WeiXinWeb.Controllers
                             if (order.UserType == (int)RCHL.Model.Enums.TrainingUserType.学员)
                             {
                                 var member = MemberBLL.Instance.GetEntity(order.MemberId);
-                                entity.SubNoticeInfo = string.Format("{0},{1}", member.NikeName, member.Mobile);
+                                entity.SubNoticeInfo = string.Format("{0},{1}", member.MemberName, member.Mobile);
                                 entity.Mobile = member.Mobile;
                             }
                             else if (order.UserType == (int)RCHL.Model.Enums.TrainingUserType.教练)

@@ -65,18 +65,18 @@ namespace RCHL.Business
 
         public bool Add(MemberEntity entity)
         {
-            if (!string.IsNullOrWhiteSpace(entity.NikeName))
+            if (!string.IsNullOrWhiteSpace(entity.MemberName))
             {
-                entity.SimpleSpelling = Str.PinYin(entity.NikeName);
+                entity.SimpleSpelling = Str.PinYin(entity.MemberName);
             }
             return InstanceDAL.Add(entity);
         }
 
         public bool Update(MemberEntity entity)
         {
-            if (!string.IsNullOrWhiteSpace(entity.NikeName))
+            if (!string.IsNullOrWhiteSpace(entity.MemberName))
             {
-                entity.SimpleSpelling = Str.PinYin(entity.NikeName);
+                entity.SimpleSpelling = Str.PinYin(entity.MemberName);
             }
             return InstanceDAL.Update(entity);
         }

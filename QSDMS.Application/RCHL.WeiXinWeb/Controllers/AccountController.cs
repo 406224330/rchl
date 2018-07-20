@@ -150,9 +150,9 @@ namespace RCHL.WeiXinWeb.Controllers
                 }
                 account.CreateTime = DateTime.Now;
                 account.Point = 0;
-                account.MemberName = account.Mobile;
+                //account.MemberName = account.Mobile;
                 var wxinfo = WxUserInfoBLL.Instance.GetEntity(account.OpenId);
-                account.NikeName = wxinfo == null ? account.Mobile : wxinfo.Nickename;
+                account.NikeName = wxinfo == null ? account.MemberName : wxinfo.Nickename;
                 account.Status = (int)Enums.UseStatus.启用;
                 account.MemberId = Util.NewUpperGuid();
                 account.LevId = ((int)RCHL.Model.Enums.UserType.预约记时会员).ToString();

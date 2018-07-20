@@ -29,6 +29,10 @@
                     ShowTips("请输入手机验证码");
                     return;
                 }
+                if (!self.Account().MemberName()) {
+                    ShowTips("请输入您的姓名");
+                    return;
+                }
                 if (!self.Account().Pwd()) {
                     ShowTips("请设置登陆密码");
                     return;
@@ -122,6 +126,12 @@
         <i class="iconfont icon-yanzhengma1"></i>
         <div class="Mber_input Mber_input2">
             <input type="text" placeholder="请输入验证码" class="Mber_input_text" data-bind="value:$root.Account().sms_verify_code"><button class="Mber_Code" data-bind="text:$root.SendCodeText,event:{click:function(){$root.GetCode();}}" id="btnSendCode"></button>
+        </div>
+    </div>
+    <div class="Mber_row">
+        <i class="iconfont icon-mima"></i>
+        <div class="Mber_input">
+            <input type="text" placeholder="请输入姓名" class="Mber_input_text" data-bind="value:$root.Account().MemberName">
         </div>
     </div>
     <div class="Mber_row">

@@ -50,7 +50,7 @@
                     if (result.IsSuccess) {
                         var data = result.ResultData["Data"];
                         if (data) {
-                            self.Account().MemberName(data.NikeName);
+                            self.Account().MemberName(data.MemberName);
                             self.Account().MemberMobile(data.Mobile);
                             self.Account().MemberId(data.MemberId);
                             self.Account().MemberLevId(data.LevId);
