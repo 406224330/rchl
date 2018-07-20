@@ -181,6 +181,8 @@
 
     //导出
     function btn_export() {
+        var keyValue = $("#gridTable").jqGridRowValue("AuditOrderId");
+        alert(keyValue)
         var queryJson = {};
         queryJson["keyword"] = $("#txt_Keyword").val();
         queryJson["condition"] = $("#queryCondition").find('.dropdown-text').attr('data-value');

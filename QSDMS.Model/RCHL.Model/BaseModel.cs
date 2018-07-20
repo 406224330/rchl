@@ -19,6 +19,11 @@ namespace RCHL.Model
         public string sidx { get; set; }
 
         public string sord { get; set; }
+
+        /// <summary>
+        /// 选择的id 多个
+        /// </summary>
+        public List<string> CheckIds { get; set; }
     }
 
     public class KeyValueEntity

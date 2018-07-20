@@ -170,6 +170,16 @@ namespace RCHL.Data.SqlServer
             {
                 sbWhere.AppendFormat(" and ServiceTime='{0}'", para.ServiceTime);
             }
+            if (para.CheckIds != null)
+            {
+                var str = "";
+                foreach (var item in para.CheckIds)
+                {
+                    str += string.Format("'{0}',", item);
+                }
+                str = str.Substring(0, str.Length - 1);
+                sbWhere.AppendFormat(" and AuditOrderId in({0})", str);
+            }
             return sbWhere.ToString();
         }
 

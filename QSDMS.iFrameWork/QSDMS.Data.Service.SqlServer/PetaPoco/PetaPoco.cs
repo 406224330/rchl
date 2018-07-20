@@ -909,7 +909,8 @@ namespace PetaPoco
 			OpenSharedConnection();
 			try
 			{
-				using (var cmd = CreateCommand(_sharedConnection, sql, args))
+				using (
+                    var cmd = CreateCommand(_sharedConnection, sql, args))
 				{
 					IDataReader r;
 					var pd = PocoData.ForType(typeof(T));
