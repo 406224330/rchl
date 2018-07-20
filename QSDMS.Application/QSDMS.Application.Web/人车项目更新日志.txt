@@ -1,0 +1,254 @@
+-----2018-01-04 更新日志
+1.教练工作平台学车预约数加预约成功条件过滤，陪驾预约加已支付条件过滤
+2.个人中心中加车主认证状态显示
+3.会员报名创建订单增加自动设置会员为高级vip功能 对应数据库增加vip过期时间
+--报名缴费自动成为高级VIP客户，VIP有效期时间为一年
+alter  table tbl_Member add VipOverDate  datetime
+4.我的考试添加选择科目修改对应数据源 增加数据字典 考试科目（kskm）
+5.系统自动修改未取消订单为完成状态 添加自动服务
+--空闲时间增加SortNum
+alter table tbl_FreeTime add SortNum int
+6.会员中心添加车主认证功能
+7.会员中心添加保险预约订单功能
+
+==========================================================================================================================
+--2018-01-20 新需求更改
+==========================================================================================================================
+
+1.学车评价-默认好评，评价之后才能预约下一次学车。增加评价状态。
+
+2.预约学车增加工作日班和非工作日班，会员表中增加白班课时，夜班课时充值。-24内可取消，后台可自行调整，区别VIP和普通会员。
+
+3.课时一个小时为一个学时，可多选时间段。
+
+
+4.预约计时类型学员可以选择教练和时间，跟vip模式一样
+
+
+5.取消操作同时取消预约的时间状态-学员收到消息
+
+6.考场实训，可以预约多个时间，教练可以预约（会员预约实训已有）-会员预约要审核，教练违约后，进入黑名单，再次预约需要审核。
+
+
+7.教练管理区别陪驾是否带车（车型）
+
+
+8.陪驾管理，是否带车分类区别选择教练（带车的客户选择带车的和不带车的教练）
+按教练    选择按时间选择 参考中心医院预约医生方式
+
+
+9.陪驾选择预约时间（选择上午，下午，晚上）-备选时间颜色调整
+
+
+10.陪驾全款和报名定金线上支付，其他线下支付（报名余款，年检，待审，实训）
+
+11.陪驾先选择区域再选择是带车和不带车
+
+
+12.教练时间，教练描述， 教练评价列表显示 （星级评价，语言描述，参考中心医院模式），预约成功 对应收到消息通过，会员消息提醒，教练消息提醒
+
+13.订单管理可以调整时间。后台可调整预约的时间-订单更改消息提醒。
+14.年检增加年检须知
+15.年检分个人用户和集团用户（集团用户需填写集团名称和车辆数量）
+16.车主信息增加车辆注册日期（行驶证上的时间）
+17.年检时间后台管理，时间自行管理，每月月初调整，前端选择 年月日 上午，下午
+18.年检增加消息提醒（到期提醒自动发送。后台设置时间）
+19.年检增加短信提醒（到期选 择预约时间的订单会员信息）
+20.驾校管理和年检机构可自行设置工作日期和时间
+--------------------------------------------------------------
+--sql
+alter table 
+
+---------------------------------------------------------------
+所需页面设计
+A.学车评价页面
+	所需内容
+	1.满意度（星级评价）或者分类选择
+	2.评价内容
+	3.评价时间
+B.教练评价学员页面
+	所需内容	
+	1.选择对应科目 科目一 科目二
+	2.勾选学车项目 如，倒库 侧方位 直角 S弯 这些应在后台对应设置
+	3.评价类型 优秀，良好，差
+	4.评价内容
+	5.评价时间
+C.选择时间区域样式需调整，空闲为绿色 已选择为红色，对应时间右上脚添加小图标（已约，未约）
+D.年检增加一级选择页面 个人年检 集团年检 （参考预约学车一级页面布局）
+E.年检增加集团年检预约页面
+	所需内容
+	1.集团名称
+	2.车辆数量
+	3.车辆类型
+	4.备注
+F.陪驾页面调整修改
+	1.一级页面选择陪驾区域和是否带车和不带车选择，陪驾区域在上面，是否带车和不带车（参考预约学车一级页面布局）
+	2.二级页面选择陪驾教练，这里提供两种选择，1.按预约时间 2.按教练
+		1.按预约时间 ,根据时间对应显示教练
+		2.按教练，教练列表 ，点击预约。选择日期后显示对应时间
+	3.陪驾预约页面操作方式可参考宜昌中心医院公共号预约医生方式设计	
+
+G.教练平台 增加可以设置陪驾的开关设置
+----------------------------------
+--调整sql脚本
+
+--人车调整sql脚本
+alter table tbl_Member add StudyHour1 int--白班学时卡
+alter table tbl_Member add StudyHour2 int--晚班学时卡
+
+alter table tbl_Teacher add ProvinceId varchar(50)
+alter table tbl_Teacher add ProvinceName varchar(50)--省
+alter table tbl_Teacher add CityId varchar(50)
+alter table tbl_Teacher add CityName varchar(50)--市
+alter table tbl_Teacher add CountyId varchar(50)
+alter table tbl_Teacher add CountyName varchar(50)--区
+alter table tbl_Teacher add AddressInfo varchar(200)--地址
+alter table tbl_Teacher add IsTakeCar int--是否带车
+alter table tbl_Teacher add Content text--描述
+alter table tbl_FreeDate add DateType int--是否工作日 1 工作日 0非工作日
+alter table tbl_FreeTime add  TimeType int--工作时段1 上午 2 下午 3 晚上
+
+
+--学员评价教练
+create table  tbl_StudyCommittee (
+	StudyCommitteeId varchar(36) primary key,
+	CommitLev	int	,
+	CommitTime datetime,
+	CommitContent text,
+	TeacherId varchar(50),
+	TeacherName varchar(50),
+	StudyOrderId varchar(50),
+	MemberId varchar(50),
+	MemberName varchar(50),
+	MemberMobile varchar(50)
+)
+
+--教练评价学员
+create table tbl_TeacherCommittee(
+	TeacherCommitteeId varchar(36) primary key,
+	CommitLev	int	,
+	CommitTime datetime,
+	CommitContent text,
+	MemberId varchar(50),
+	MemberName varchar(50),
+	ClassId varchar(50),
+	ClassName varchar(50),
+	SubjectId varchar(50),
+	SubjectName varchar(50),
+	StudyContent varchar(800),--多个逗号隔开
+	StudyOrderId varchar(50),
+	TeacherId varchar(50),
+	TeacherName varchar(50)
+
+)
+
+--机构评价
+create table tbl_AuditCommittee
+(
+	AuditCommitteeId  varchar(36) primary key,
+	CommitLev	int	,
+	CommitTime datetime,
+	CommitContent text,
+	MemberId varchar(50),
+	MemberName varchar(50),
+	MemberMobile varchar(50),
+	OrganizationId  varchar(50),
+	OrganizationName  varchar(50),
+	OrderId varchar(50)
+)
+
+--预约学车时间明细 一对多关系
+create table tbl_StudyOrderDetail(
+	StudyOrderDetailId varchar(36) primary key,
+	StudyOrderId varchar(50),
+	ServiceDate datetime,
+	ServiceTime varchar(50),
+	TimeType int,	
+)
+--预约实训时间明细 一对多关系
+create table tbl_TrainingOrderDetail(
+	TrainingOrderDetailId varchar(36) primary key,
+	TrainingOrderId varchar(50),
+	ServiceDate datetime,
+	ServiceTime varchar(50)
+)
+
+
+--课程
+create table tbl_Class(
+	ClassId varchar(36) primary key,
+	ClassName varchar(50)
+)
+
+--课程科目
+create table tbl_Course(
+	CourseId varchar(36) primary key,
+	CourseName varchar(50),
+	ClassId varchar(36)
+)
+--科目项目
+create table tbl_CourseItem(
+	CourseItemId varchar(36) primary key,
+	Name	varchar(50),
+	CourseId varchar(36) 
+)
+
+--黑名单管理
+create table tbl_BlackList(
+	BlackListId varchar(36) primary key,
+	ObjectId varchar(50),
+	ObjectName varchar(50),
+	Type int
+)
+--驾校月工作时间设置
+create  table tbl_MonthWorkDay(
+	MonthWorkDayId varchar(36) primary key,
+	SchoolId varchar(50),
+	YearMonth varchar(50),--年月
+	WorkDay datetime,
+	Week int,--星期
+	WeekName varchar(50),--星期名称
+	DateType int ,--工作日，非工作日
+)
+
+--驾校白班夜班时间设置
+create  table tbl_WorkTimeTable(
+	WorkTimeTableId varchar(36) primary key,
+	SchoolId varchar(50),
+	StartTime varchar(10),
+	EndTime varchar(10),
+	TimeType int,
+	SortNum int
+)
+--驾校实训时间设置
+create  table tbl_TrainingTimeTable(
+	TrainingTimeTableId varchar(36) primary key,
+	SchoolId varchar(50),
+	StartTime varchar(10),
+	EndTime varchar(10),	
+	SortNum int
+)
+--集团年检订单
+create table tbl_GroupAuditOrder(
+	GroupAuditOrderId varchar(36) primary key,
+	GroupAuditOrderNo varchar(50),
+	MemberId varchar(50),
+	Mobile varchar(50),
+	ServiceTime varchar(50),
+	OrganizationName varchar(50),
+	OrganizationId varchar(50),
+	Price decimal(10,2),
+	Status int,
+	CreateTime datetime,
+	CreateId varchar(50),
+	ServiceDate datetime,
+	MemberName varchar(50),
+	GroupName varchar(50),
+	CarCount int,
+	CarType varchar(50),
+	Remark varchar(500)
+
+)
+
+=================================================================================================================
+
