@@ -81,7 +81,7 @@ namespace QSDMS.Application.Web.Areas.ReportManage.Controllers
                 }
 
             }
-
+            para.NotStatus = (int)RCHL.Model.Enums.PaySatus.已取消;
             var pageList = new List<TakeAuditOrderEntity>();
             try
             {
@@ -164,6 +164,7 @@ namespace QSDMS.Application.Web.Areas.ReportManage.Controllers
                 {
                     para.ServiceTime = queryParam["TimeSpace"].ToString();
                 }
+                para.NotStatus = (int)RCHL.Model.Enums.PaySatus.已取消;
                 var list = TakeAuditOrderBLL.Instance.GetList(para);
                 if (list != null)
                 {

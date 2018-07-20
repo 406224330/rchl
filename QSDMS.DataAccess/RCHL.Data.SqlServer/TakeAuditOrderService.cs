@@ -162,6 +162,10 @@ namespace RCHL.Data.SqlServer
             {
                 sbWhere.AppendFormat(" and Status='{0}'", para.Status);
             }
+            if (para.NotStatus != null)
+            {
+                sbWhere.AppendFormat(" and Status<>'{0}'", para.NotStatus);
+            }
             if (para.MemberId != null)
             {
                 sbWhere.AppendFormat(" and MemberId='{0}'", para.MemberId);

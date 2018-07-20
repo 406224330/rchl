@@ -10,6 +10,10 @@ namespace RCHL.Model
     {
         public string StatusName { get; set; }
         public string CashTypeName { get; set; }
+        /// <summary>
+        /// 不是对应状态
+        /// </summary>
+        public int? NotStatus { get; set; }
         public AuditOrganizationEntity Audit { get; set; }
     }
 }
